@@ -1,4 +1,5 @@
 .idea
 .consulo
-/target
+target/
 core/sandbox
+*.iml

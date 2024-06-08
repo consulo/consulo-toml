@@ -10,6 +10,10 @@
 
     <resource-bundle>messages.TomlBundle</resource-bundle>
 
+    <tags>
+        <tag>language</tag>
+    </tags>
+
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="TOML"
                   language="TOML"

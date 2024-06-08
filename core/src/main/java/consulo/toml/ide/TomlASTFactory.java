@@ -4,7 +4,7 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.language.ast.IElementType;
 import consulo.language.impl.ast.ASTCompositeFactory;
 import consulo.language.impl.ast.CompositeElement;
-import org.jetbrains.annotations.NotNull;
+import jakarta.annotation.Nonnull;
 import org.toml.lang.psi.TomlElementTypes;
 import org.toml.lang.psi.impl.*;
 
@@ -29,9 +29,9 @@ public class TomlASTFactory implements ASTCompositeFactory, TomlElementTypes {
         map.put(ARRAY_TABLE, TomlArrayTableImpl::new);
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public CompositeElement createComposite(@NotNull IElementType type) {
+    public CompositeElement createComposite(@Nonnull IElementType type) {
         Function<IElementType, CompositeElement> function = Objects.requireNonNull(map.get(type));
         return function.apply(type);
     }
