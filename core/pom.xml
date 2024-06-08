@@ -92,6 +92,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/parsers</generatedSourcesDirectory>
                     <annotationProcessors>
                         <annotationProcessor>consulo.internal.injecting.binding.InjectingBindingProcessor</annotationProcessor>
                         <annotationProcessor>consulo.internal.injecting.binding.TopicBindingProcessor</annotationProcessor>
@@ -163,27 +164,6 @@
                         <goals>
                             <goal>workspace</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.6.0</version>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.build.directory}/generated-sources/parsers</source>
-                                <source>${project.build.directory}/generated-sources/lexers</source>
-                                <source>${project.build.directory}/generated-sources/icon</source>
-                            </sources>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
