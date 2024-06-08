@@ -11,7 +11,7 @@
     <resource-bundle>messages.TomlBundle</resource-bundle>
 
     <tags>
-        <tag>language</tag>
+        <tag>markup.language</tag>
     </tags>
 
     <extensions defaultExtensionNs="com.intellij">

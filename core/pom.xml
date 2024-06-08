@@ -92,7 +92,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/parsers</generatedSourcesDirectory>
                     <annotationProcessors>
                         <annotationProcessor>consulo.internal.injecting.binding.InjectingBindingProcessor</annotationProcessor>
                         <annotationProcessor>consulo.internal.injecting.binding.TopicBindingProcessor</annotationProcessor>
@@ -132,8 +131,7 @@
                     <execution>
                         <id>production</id>
                         <phase>process-classes</phase>
-                        <goals>
-                        </goals>
+                        <goals></goals>
                     </execution>
                 </executions>
             </plugin>
@@ -167,6 +165,38 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/parsers</source>
+                                <source>${project.build.directory}/generated-sources/lexers</source>
+                                <source>${project.build.directory}/generated-sources/icon</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>org.toml.lang</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
