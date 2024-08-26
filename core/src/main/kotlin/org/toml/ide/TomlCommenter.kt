@@ -5,9 +5,13 @@
 
 package org.toml.ide
 
+import consulo.annotation.component.ExtensionImpl
 import consulo.language.Commenter
+import consulo.language.Language
+import org.toml.lang.TomlLanguage
 
-abstract class TomlCommenter : Commenter {
+@ExtensionImpl
+class TomlCommenter : Commenter {
     override fun getLineCommentPrefix(): String = "#"
 
     override fun getBlockCommentPrefix(): String? = null
@@ -15,4 +19,5 @@ abstract class TomlCommenter : Commenter {
 
     override fun getCommentedBlockCommentPrefix(): String? = null
     override fun getCommentedBlockCommentSuffix(): String? = null
+    override fun getLanguage(): Language = TomlLanguage
 }

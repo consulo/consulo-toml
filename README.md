@@ -1,4 +1,4 @@
-# [TOML](https://github.com/toml-lang/toml) language support for IntelliJ IDEA based IDEs
+# [TOML](https://github.com/toml-lang/toml) language support for Consulo IDE
 
 [![download]][plugin]
 [![version]][plugin]

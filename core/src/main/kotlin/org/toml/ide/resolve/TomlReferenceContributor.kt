@@ -1,14 +1,20 @@
 package org.toml.ide.resolve
 
+import consulo.annotation.component.ExtensionImpl
+import consulo.language.Language
 import consulo.language.impl.psi.path.WebReference
 import consulo.language.pattern.PlatformPatterns.psiElement
 import consulo.language.psi.*
 import consulo.language.util.ProcessingContext
+import org.toml.lang.TomlLanguage
 import org.toml.lang.psi.TomlLiteral
 import org.toml.lang.psi.ext.TomlLiteralKind
 import org.toml.lang.psi.ext.kind
 
-abstract class TomlReferenceContributor : PsiReferenceContributor() {
+@ExtensionImpl
+class TomlReferenceContributor : PsiReferenceContributor() {
+    override fun getLanguage(): Language = TomlLanguage
+
     override fun registerReferenceProviders(registrar: PsiReferenceRegistrar) {
         registrar.registerReferenceProvider(
             psiElement(TomlLiteral::class.java),

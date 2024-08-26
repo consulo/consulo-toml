@@ -3,6 +3,7 @@
     <name>Toml</name>
     <vendor>JetBrains</vendor>
     <category>Languages</category>
+    <depends>consulo.library.kotlin.sdk</depends>
 
     <description><![CDATA[
       Adds support for the <a href="https://toml.io/en/">TOML</a> configuration file syntax.

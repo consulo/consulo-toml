@@ -28,6 +28,6 @@ abstract class TomlUnresolvedReferenceInspection : LocalInspectionTool() {
     private fun checkReference(element: PsiElement, holder: ProblemsHolder) {
         element.references
             .filter { it.resolve() == null }
-            .forEach { holder.registerProblem(it, ProblemsHolder.unresolvedReferenceMessage(it), ProblemHighlightType.LIKE_UNKNOWN_SYMBOL) }
+            .forEach { holder.registerProblem(it, ProblemsHolder.unresolvedReferenceMessage(it).get(), ProblemHighlightType.LIKE_UNKNOWN_SYMBOL) }
     }
 }

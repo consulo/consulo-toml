@@ -5,12 +5,15 @@
 
 package org.toml.ide.formatter
 
+import consulo.annotation.component.ExtensionImpl
 import consulo.document.util.TextRange
 import consulo.language.ast.ASTNode
 import consulo.language.codeStyle.*
 import consulo.language.psi.PsiFile
+import org.toml.lang.TomlLanguage
 
-abstract class TomlFormattingModelBuilder : FormattingModelBuilder {
+@ExtensionImpl
+class TomlFormattingModelBuilder : FormattingModelBuilder {
     override fun getRangeAffectingIndent(file: PsiFile?, offset: Int, elementAtOffset: ASTNode?): TextRange? = null
 
     override fun createModel(formattingContext: FormattingContext): FormattingModel {
@@ -20,6 +23,8 @@ abstract class TomlFormattingModelBuilder : FormattingModelBuilder {
         val block = createBlock(element.node, null, Indent.getNoneIndent(), null, ctx)
         return FormattingModelProvider.createFormattingModelForPsiFile(element.containingFile, block, settings)
     }
+
+    override fun getLanguage() = TomlLanguage
 
     companion object {
         fun createBlock(

@@ -5,14 +5,19 @@
 
 package org.toml.ide
 
+import consulo.annotation.component.ExtensionImpl
 import consulo.language.BracePair
+import consulo.language.Language
 import consulo.language.PairedBraceMatcher
 import consulo.language.ast.IElementType
 import consulo.language.psi.PsiFile
 import org.toml.lang.TomlLanguage
 import org.toml.lang.psi.TomlElementTypes.*
 
-abstract class TomlBraceMatcher : PairedBraceMatcher {
+@ExtensionImpl
+class TomlBraceMatcher : PairedBraceMatcher {
+    override fun getLanguage(): Language = TomlLanguage;
+
     override fun getPairs() = PAIRS
 
     override fun isPairedBracesAllowedBeforeType(lbraceType: IElementType, contextType: IElementType?): Boolean = true

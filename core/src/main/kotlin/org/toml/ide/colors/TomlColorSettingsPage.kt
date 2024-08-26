@@ -5,6 +5,7 @@
 
 package org.toml.ide.colors
 
+import consulo.annotation.component.ExtensionImpl
 import consulo.colorScheme.TextAttributesKey
 import consulo.colorScheme.setting.AttributesDescriptor
 import consulo.colorScheme.setting.ColorDescriptor
@@ -14,7 +15,8 @@ import consulo.util.io.StreamUtil
 import org.toml.ide.TomlHighlighter
 import org.toml.lang.TomlLanguage
 
-abstract class TomlColorSettingsPage : ColorSettingsPage {
+@ExtensionImpl
+class TomlColorSettingsPage : ColorSettingsPage {
 
     private val attributesDescriptors = TomlColor.values().map { it.attributesDescriptor }.toTypedArray()
     private val tagToDescriptorMap = TomlColor.values().associateBy({ it.name }, { it.textAttributesKey })

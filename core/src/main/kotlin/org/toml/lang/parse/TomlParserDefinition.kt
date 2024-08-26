@@ -5,6 +5,8 @@
 
 package org.toml.lang.parse
 
+import consulo.annotation.component.ExtensionImpl
+import consulo.language.Language
 import consulo.language.ast.ASTNode
 import consulo.language.ast.IFileElementType
 import consulo.language.ast.TokenSet
@@ -21,7 +23,8 @@ import org.toml.lang.lexer.TomlLexer
 import org.toml.lang.psi.TOML_COMMENTS
 import org.toml.lang.psi.TomlFile
 
-abstract class TomlParserDefinition : ParserDefinition {
+@ExtensionImpl
+class TomlParserDefinition : ParserDefinition {
     override fun createParser(version : LanguageVersion): PsiParser = TomlParser()
 
     override fun createFile(viewProvider: FileViewProvider): PsiFile = TomlFile(viewProvider)
@@ -40,6 +43,7 @@ abstract class TomlParserDefinition : ParserDefinition {
     override fun createElement(node: ASTNode): PsiElement =
         throw UnsupportedOperationException(node.elementType.toString()) // See org.toml.lang.psi.impl.TomlASTFactory
 
+    override fun getLanguage(): Language = TomlLanguage;
     companion object {
         val FILE: IFileElementType = IFileElementType(TomlLanguage)
     }

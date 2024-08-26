@@ -5,16 +5,22 @@
 
 package org.toml.ide.folding
 
+import consulo.annotation.component.ExtensionImpl
 import consulo.application.dumb.DumbAware
 import consulo.document.Document
 import consulo.document.util.TextRange
+import consulo.language.Language
 import consulo.language.ast.ASTNode
 import consulo.language.editor.folding.CustomFoldingBuilder
 import consulo.language.editor.folding.FoldingDescriptor
 import consulo.language.psi.PsiElement
+import org.toml.lang.TomlLanguage
 import org.toml.lang.psi.*
 
-abstract class TomlFoldingBuilder : CustomFoldingBuilder(), DumbAware {
+@ExtensionImpl
+class TomlFoldingBuilder : CustomFoldingBuilder(), DumbAware {
+    override fun getLanguage(): Language = TomlLanguage
+
     override fun buildLanguageFoldRegions(
         descriptors: MutableList<FoldingDescriptor>,
         root: PsiElement,

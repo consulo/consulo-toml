@@ -5,9 +5,12 @@
 
 package org.toml.ide.search
 
+import consulo.annotation.component.ExtensionImpl
+import consulo.language.Language
 import consulo.language.cacheBuilder.WordsScanner
 import consulo.language.findUsage.FindUsagesProvider
 import consulo.language.psi.PsiElement
+import org.toml.lang.TomlLanguage
 
 /**
  * This basic provider just enables `Find Usages` action for TOML language. Implement
@@ -16,7 +19,8 @@ import consulo.language.psi.PsiElement
  * [com.intellij.usages.impl.rules.UsageTypeProviderEx]
  * in your plugin to make find usages for your TOML use-case.
  */
-abstract class TomlFindUsagesProvider : FindUsagesProvider {
+@ExtensionImpl
+class TomlFindUsagesProvider : FindUsagesProvider {
     /** If null, use default [com.intellij.lang.cacheBuilder.SimpleWordsScanner] here */
     override fun getWordsScanner(): WordsScanner? = null
 
@@ -25,4 +29,5 @@ abstract class TomlFindUsagesProvider : FindUsagesProvider {
     override fun getType(element: PsiElement): String = ""
     override fun getDescriptiveName(element: PsiElement): String = ""
     override fun getNodeText(element: PsiElement, useFullName: Boolean): String = ""
+    override fun getLanguage(): Language = TomlLanguage;
 }
