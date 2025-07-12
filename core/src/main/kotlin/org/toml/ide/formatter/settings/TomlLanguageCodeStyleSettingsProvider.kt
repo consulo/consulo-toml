@@ -26,7 +26,7 @@ class TomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider(
         TomlCodeStyleSettings(settings)
 
     override fun createSettingsPage(settings: CodeStyleSettings?, modelSettings: CodeStyleSettings?): Configurable {
-        return object : CodeStyleAbstractConfigurable(settings, modelSettings, configurableDisplayName) {
+        return object : CodeStyleAbstractConfigurable(settings, modelSettings, configurableDisplayName.get()) {
             override fun createPanel(settings: CodeStyleSettings): CodeStyleAbstractPanel =
                 TomlCodeStyleMainPanel(currentSettings, settings)
         }
