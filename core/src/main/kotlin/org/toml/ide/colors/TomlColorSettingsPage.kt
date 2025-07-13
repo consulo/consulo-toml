@@ -25,7 +25,7 @@ class TomlColorSettingsPage : ColorSettingsPage {
         StreamUtil.convertSeparators(StreamUtil.readText(stream, "UTF-8"))
     }
 
-    override fun getDisplayName(): String = TomlLanguage.displayName
+    override fun getDisplayName(): String = TomlLanguage.displayName.get()
     override fun getHighlighter(): SyntaxHighlighter = TomlHighlighter()
     override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey> = tagToDescriptorMap
     override fun getAttributeDescriptors(): Array<AttributesDescriptor> = attributesDescriptors
