@@ -11,6 +11,7 @@ import consulo.colorScheme.setting.AttributesDescriptor
 import consulo.colorScheme.setting.ColorDescriptor
 import consulo.language.editor.colorScheme.setting.ColorSettingsPage
 import consulo.language.editor.highlight.SyntaxHighlighter
+import consulo.localize.LocalizeValue
 import consulo.util.io.StreamUtil
 import org.toml.ide.TomlHighlighter
 import org.toml.lang.TomlLanguage
@@ -25,7 +26,7 @@ class TomlColorSettingsPage : ColorSettingsPage {
         StreamUtil.convertSeparators(StreamUtil.readText(stream, "UTF-8"))
     }
 
-    override fun getDisplayName(): String = TomlLanguage.displayName.get()
+    override fun getDisplayName(): LocalizeValue = TomlLanguage.displayName
     override fun getHighlighter(): SyntaxHighlighter = TomlHighlighter()
     override fun getAdditionalHighlightingTagToDescriptorMap(): Map<String, TextAttributesKey> = tagToDescriptorMap
     override fun getAttributeDescriptors(): Array<AttributesDescriptor> = attributesDescriptors
