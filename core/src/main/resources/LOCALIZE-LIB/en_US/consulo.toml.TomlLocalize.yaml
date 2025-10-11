@@ -1,0 +1,26 @@
+color.settings.toml.boolean:
+    text: Boolean
+color.settings.toml.number:
+    text: Number
+color.settings.toml.comments:
+    text: Comments
+color.settings.toml.date:
+    text: Date
+color.settings.toml.keys:
+    text: Keys
+filetype.toml.description:
+    text: TOML
+inspection.group.toml:
+    text: TOML
+inspection.toml.message.inline.tables.on.single.line:
+    text: Inline tables are intended to appear on a single line
+inspection.toml.message.trailing.commas.in.inline.tables:
+    text: Trailing commas are not allowed in inline tables
+inspection.toml.unresolved.reference.display.name:
+    text: Unresolved reference
+intention.category.toml:
+    text: TOML
+intention.toml.name.expand.into.separate.table:
+    text: Expand into separate table
+intention.toml.name.remove.trailing.comma:
+    text: Remove trailing comma

@@ -14,8 +14,9 @@ import consulo.language.editor.inspection.scheme.InspectionManager
 import consulo.language.psi.PsiElement
 import consulo.language.psi.PsiWhiteSpace
 import consulo.language.psi.SyntaxTraverser
+import consulo.localize.LocalizeValue
 import consulo.project.Project
-import org.toml.TomlBundle
+import consulo.toml.localize.TomlLocalize
 import org.toml.lang.psi.TomlArray
 import org.toml.lang.psi.TomlElementTypes
 import org.toml.lang.psi.TomlInlineTable
@@ -29,27 +30,26 @@ class TomlAnnotator : AnnotatorBase() {
                 .filterIsInstance<PsiWhiteSpace>()
             if (whiteSpaces.any { it.textContains('\n') }) {
                 holder.newAnnotation(
-                    HighlightSeverity.ERROR,
-                  TomlBundle.message("inspection.toml.message.inline.tables.on.single.line")).create()
+                    HighlightSeverity.ERROR, TomlLocalize.inspectionTomlMessageInlineTablesOnSingleLine()).create()
             }
         }
 
         val parent = element.parent
         if (element.elementType == TomlElementTypes.COMMA && parent is TomlInlineTable &&
             element.textOffset > parent.entries.lastOrNull()?.textOffset ?: 0) {
-            val message = TomlBundle.message("intention.toml.name.remove.trailing.comma")
+            val message = TomlLocalize.intentionTomlNameRemoveTrailingComma()
 
             val fix = object : LocalQuickFix {
-                override fun getFamilyName(): String = message
+                override fun getName(): LocalizeValue = message
                 override fun applyFix(project: Project, descriptor: ProblemDescriptor) {
                     descriptor.psiElement?.delete()
                 }
             }
 
             val problemDescriptor = InspectionManager.getInstance(element.project)
-                .createProblemDescriptor(element, message, fix, ProblemHighlightType.ERROR, true)
+                .createProblemDescriptor(element, message.get(), fix, ProblemHighlightType.ERROR, true)
 
-            holder.newAnnotation(HighlightSeverity.ERROR, TomlBundle.message("inspection.toml.message.trailing.commas.in.inline.tables"))
+            holder.newAnnotation(HighlightSeverity.ERROR, TomlLocalize.inspectionTomlMessageTrailingCommasInInlineTables().get())
                 .newLocalQuickFix(fix, problemDescriptor)
                 .registerFix()
                 .create()

@@ -10,10 +10,10 @@ import consulo.language.ast.TokenSet
 import consulo.language.file.LanguageFileType
 import consulo.localize.LocalizeValue
 import consulo.toml.icon.TomlIconGroup
+import consulo.toml.localize.TomlLocalize
 import consulo.ui.image.Image
 import consulo.virtualFileSystem.VirtualFile
 import consulo.virtualFileSystem.fileType.FileTypeIdentifiableByVirtualFile
-import org.toml.TomlBundle
 import org.toml.lang.TomlLanguage
 import org.toml.lang.psi.TomlElementTypes.*
 
@@ -21,8 +21,8 @@ class TomlTokenType(debugName: String) : IElementType(debugName, TomlLanguage)
 class TomlCompositeType(debugName: String) : IElementType(debugName, TomlLanguage)
 
 object TomlFileType : LanguageFileType(TomlLanguage), FileTypeIdentifiableByVirtualFile {
-    override fun getName(): String = "TOML"
-    override fun getDescription(): LocalizeValue = LocalizeValue.localizeTODO(TomlBundle.message("filetype.toml.description"))
+    override fun getId(): String = "TOML"
+    override fun getDescription(): LocalizeValue = TomlLocalize.filetypeTomlDescription()
     override fun getDefaultExtension(): String = "toml"
     override fun getIcon(): Image = TomlIconGroup.toml_file();
     override fun getCharset(file: VirtualFile, content: ByteArray): String = "UTF-8"

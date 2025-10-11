@@ -8,13 +8,14 @@ package org.toml.ide.intentions
 import consulo.codeEditor.Editor
 import consulo.language.psi.PsiElement
 import consulo.language.psi.util.PsiTreeUtil
+import consulo.localize.LocalizeValue
 import consulo.project.Project
-import org.toml.TomlBundle
+import consulo.toml.localize.TomlLocalize
 import org.toml.lang.psi.*
 import java.util.function.Predicate
 
 class TomlExpandInlineTableIntention : TomlElementBaseIntentionAction<TomlExpandInlineTableIntention.Context>() {
-    override fun getText(): String = TomlBundle.message("intention.toml.name.expand.into.separate.table")
+    override fun getText(): LocalizeValue = TomlLocalize.intentionTomlNameExpandIntoSeparateTable()
     //override fun getFamilyName(): String = text
 
     override fun findApplicableContext(project: Project, editor: Editor, element: PsiElement): Context? {

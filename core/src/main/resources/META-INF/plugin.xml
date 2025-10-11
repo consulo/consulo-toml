@@ -9,8 +9,6 @@
       Adds support for the <a href="https://toml.io/en/">TOML</a> configuration file syntax.
     ]]></description>
 
-    <resource-bundle>messages.TomlBundle</resource-bundle>
-
     <tags>
         <tag>markup.language</tag>
     </tags>
