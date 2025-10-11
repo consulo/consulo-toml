@@ -7,13 +7,10 @@ package org.toml.ide.colors
 
 import consulo.colorScheme.TextAttributesKey
 import consulo.colorScheme.setting.AttributesDescriptor
-import consulo.configurable.OptionsBundle
 import consulo.configurable.localize.ConfigurableLocalize
 import consulo.language.editor.annotation.HighlightSeverity
 import consulo.localize.LocalizeValue
 import consulo.toml.localize.TomlLocalize
-import org.toml.TomlBundle
-import java.util.function.Supplier
 import consulo.codeEditor.DefaultLanguageHighlighterColors as Default
 
 enum class TomlColor(humanName: LocalizeValue, default: TextAttributesKey? = null) {
