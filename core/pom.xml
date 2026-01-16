@@ -50,21 +50,6 @@
         <plugins>
             <plugin>
                 <groupId>consulo.maven</groupId>
-                <artifactId>notnull-maven-plugin</artifactId>
-                <inherited>false</inherited>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>production</id>
-                        <phase>process-classes</phase>
-                        <goals></goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>consulo.maven</groupId>
                 <artifactId>maven-consulo-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
@@ -73,9 +58,6 @@
                         <skip>${dev.mode}</skip>
                         <version>${build.number}</version>
                     </packaging>
-                    <dependencies>
-                        <dependency>consulo.library.kotlin.sdk</dependency>
-                    </dependencies>
                 </configuration>
                 <executions>
                     <execution>
@@ -97,98 +79,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
-                                <sourceDir>${project.build.directory}/generated-sources/parsers</sourceDir>
-                                <sourceDir>${project.build.directory}/generated-sources/lexers</sourceDir>
-                                <sourceDir>${project.build.directory}/generated-sources/icon</sourceDir>
-                            </sourceDirs>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <compilerPlugins>
-                        <compilerPlugin>ksp</compilerPlugin>
-                    </compilerPlugins>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.dyescape</groupId>
-                        <artifactId>kotlin-maven-symbol-processing</artifactId>
-                        <version>1.6</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>consulo.internal</groupId>
-                        <artifactId>compiler.apt.kotlin</artifactId>
-                        <version>2.0-SNAPSHOT</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>consulo.internal</groupId>
-                        <artifactId>compiler.apt.kotlin.generation</artifactId>
-                        <version>2.0-SNAPSHOT</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Automatic-Module-Name>org.toml.lang</Automatic-Module-Name>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>default-testCompile</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>testCompile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>consulo.plugin.library</groupId>
-            <artifactId>consulo.library.kotlin-sdk</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 </project>
