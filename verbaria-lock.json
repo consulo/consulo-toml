@@ -1,0 +1,15 @@
+{
+  "lockVersion" : 1,
+  "project" : "consulo-toml",
+  "projectVersion" : "master",
+  "sourceLocale" : "en-US",
+  "generatedAt" : "2026-06-28T18:46:52.099440854Z",
+  "documents" : {
+    "consulo.toml.TomlLocalize" : {
+      "source" : {
+        "revision" : 1,
+        "sig" : "e28d4a65ac630d289bfc0aa2028e7b97"
+      }
+    }
+  }
+}
